@@ -16,8 +16,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && chmod +x dist/index.js",
-    "test": "npm run build && node --test test/*.test.mjs",
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/index.js',0o755)\"",
+    "test": "npm run build && node --test test/prices.test.mjs test/scan.test.mjs test/cli.test.mjs",
     "prepublishOnly": "npm test",
     "start": "node dist/index.js"
   },
