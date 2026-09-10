@@ -32,16 +32,19 @@
     "pricing",
     "cache"
   ],
-  "author": "Fakhar ul Hassan",
+  "author": "AI Tech Explore LLC (https://aitechexplore.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EasyTechWithHassan/claudecost.git"
+    "url": "git+https://github.com/aitechexplore/claudecost.git"
   },
-  "homepage": "https://github.com/EasyTechWithHassan/claudecost#readme",
-  "bugs": "https://github.com/EasyTechWithHassan/claudecost/issues",
+  "homepage": "https://github.com/aitechexplore/claudecost#readme",
+  "bugs": "https://github.com/aitechexplore/claudecost/issues",
   "devDependencies": {
     "typescript": "^5.6.0",
     "@types/node": "^22.0.0"
-  }
+  },
+  "contributors": [
+    "Fakhar ul Hassan"
+  ]
 }

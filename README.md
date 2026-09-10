@@ -104,4 +104,6 @@ Prices are USD per million tokens. Cache writes cost 1.25x input for the 5-minut
 
 ## License
 
-MIT
+MIT. Copyright (c) 2026 [AI Tech Explore LLC](https://aitechexplore.com).
+
+Built by [AI Tech Explore LLC](https://aitechexplore.com). Source: [github.com/aitechexplore/claudecost](https://github.com/aitechexplore/claudecost).
