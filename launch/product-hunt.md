@@ -39,6 +39,6 @@ It's MIT-licensed and a single dependency-free Node package. I'd love to hear wh
 ## Launch checklist
 - [ ] `npm login`, then `npm publish` from the repo (already `prepublishOnly`-tested)
 - [ ] Make the GitHub repo public; add topics claude-code, anthropic, cost, cli
-- [ ] Record the 5 screenshots above with NO_COLOR unset in a dark terminal, 100 columns wide
+- [x] Screenshots 1-4 rendered from real output in `launch/screenshots/` (summary, sessions, cache, branches, models). Still to do: the `claudecost live` GIF, and re-shoot any screenshot you want with your own data.
 - [ ] Post at 00:01 PT (Product Hunt's daily reset) on a Tuesday or Wednesday
 - [ ] Reply to every comment in the first 4 hours; questions people asked the last tool in this space: overhead (none), retroactive (yes), CI (yes, --dir), mixed local models (--prices), agent-to-agent (--sidechain), repricing (prices_version)
