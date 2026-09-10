@@ -33,13 +33,13 @@ interface Opts {
   version: boolean;
 }
 
-const HELP = `claudecost ${VERSION}: see what your Claude Code sessions actually cost.
+const HELP = `claudebill ${VERSION}: see what your Claude Code sessions actually cost.
 
 Reads the transcripts Claude Code already keeps under ~/.claude/projects.
 No install hooks, no network, no account. History is analyzed retroactively.
 
 USAGE
-  claudecost [command] [options]
+  claudebill [command] [options]
 
 COMMANDS
   summary            Totals for today, this week, this month, all time (default)
@@ -74,14 +74,14 @@ OPTIONS
   -v, --version      Version
 
 EXAMPLES
-  claudecost                              # what did Claude Code cost me?
-  claudecost sessions --since 7d          # which sessions burned the budget this week
-  claudecost branches --since month       # cost per branch this month
-  claudecost cache                        # is prompt caching earning its keep?
-  claudecost summary --plan max20         # API-equivalent spend vs the Max plan
-  claudecost live                         # watch a session's cost tick up
-  claudecost export --csv > turns.csv     # everything, for your own analysis
-  CLAUDE_CONFIG_DIR=/ci/home/.claude claudecost sessions --json   # headless / CI
+  claudebill                              # what did Claude Code cost me?
+  claudebill sessions --since 7d          # which sessions burned the budget this week
+  claudebill branches --since month       # cost per branch this month
+  claudebill cache                        # is prompt caching earning its keep?
+  claudebill summary --plan max20         # API-equivalent spend vs the Max plan
+  claudebill live                         # watch a session's cost tick up
+  claudebill export --csv > turns.csv     # everything, for your own analysis
+  CLAUDE_CONFIG_DIR=/ci/home/.claude claudebill sessions --json   # headless / CI
 
 Prices are Anthropic list prices (version ${PRICES_VERSION}); every report says so.
 Subscription plans bill differently: the numbers are what the same tokens would cost
@@ -279,9 +279,9 @@ function cmdSummary(turns: Turn[], tb: Record<string, ModelPrice>, _args: string
     console.log(dim("  Subscription plans meter usage in 5-hour windows, not dollars; this is what the same tokens would have cost on the API."));
   }
   const cacheSaved = cacheSavings(turns, tb);
-  if (cacheSaved > 0) console.log("\n" + `Prompt caching saved you about ${green(money(cacheSaved))} all time. ` + dim("Run `claudecost cache` for the breakdown."));
+  if (cacheSaved > 0) console.log("\n" + `Prompt caching saved you about ${green(money(cacheSaved))} all time. ` + dim("Run `claudebill cache` for the breakdown."));
   console.log(unpricedNote(all.unpricedModels));
-  console.log(dim(`\nTop: claudecost sessions --since 7d   |   Per branch: claudecost branches   |   Live: claudecost live`));
+  console.log(dim(`\nTop: claudebill sessions --since 7d   |   Per branch: claudebill branches   |   Live: claudebill live`));
   return 0;
 }
 
@@ -335,7 +335,7 @@ function cmdSessions(turns: Turn[], tb: Record<string, ModelPrice>, _args: strin
   const all = totals(turns, tb);
   console.log(bold(`${sessions.length} sessions, ${money(all.cost)} API-equivalent`) + dim(` (showing ${shown.length}, sorted by ${opts.sort})`));
   console.log(table(["Session", "Project", "Branch", "Started", "!Dur", "!Turns", "!Tokens", "!Cache", "!Cost"], shown.map((s) => [s.sessionId.slice(0, 8), truncate(s.project, 26), truncate(s.branches[0] || "-", 18), shortDate(s.firstTs), minutes(s.durationMin), String(s.turns), tokens(s.totalTokens), pct(s.cacheHitRate), money(s.cost)])));
-  console.log(dim("\nDetail: claudecost session <id>"));
+  console.log(dim("\nDetail: claudebill session <id>"));
   console.log(unpricedNote(all.unpricedModels));
   return 0;
 }
@@ -343,7 +343,7 @@ function cmdSessions(turns: Turn[], tb: Record<string, ModelPrice>, _args: strin
 function cmdSession(turns: Turn[], tb: Record<string, ModelPrice>, args: string[], opts: Opts): number {
   const id = args[0];
   if (!id) {
-    console.error(red("error: session <id> needs a session id (or its first characters); list them with `claudecost sessions`"));
+    console.error(red("error: session <id> needs a session id (or its first characters); list them with `claudebill sessions`"));
     return 2;
   }
   const matches = [...new Set(turns.filter((t) => t.sessionId.startsWith(id)).map((t) => t.sessionId))];

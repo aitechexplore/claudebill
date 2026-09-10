@@ -33,7 +33,7 @@ export function defaultClaudeDir(): string {
 
 function cacheRoot(): string {
   const base = process.env.XDG_CACHE_HOME || join(homedir(), ".cache");
-  return join(base, "claudecost", `index-v${CACHE_SCHEMA}`);
+  return join(base, "claudebill", `index-v${CACHE_SCHEMA}`);
 }
 
 interface CacheEntry {
