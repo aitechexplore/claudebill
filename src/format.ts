@@ -28,6 +28,12 @@ export function pct(x: number): string {
   return `${Math.round(x * 100)}%`;
 }
 
+/** Share of a total: rounds to whole percent, but never hides a non-zero slice as 0%. */
+export function share(x: number): string {
+  if (x > 0 && x < 0.005) return "<1%";
+  return pct(x);
+}
+
 export function minutes(m: number): string {
   if (m < 1) return "<1m";
   if (m < 60) return `${Math.round(m)}m`;

@@ -6,7 +6,7 @@ import { join, basename } from "node:path";
 import { createInterface } from "node:readline";
 import type { Turn } from "./types.js";
 
-const CACHE_SCHEMA = 3;
+const CACHE_SCHEMA = 4;
 
 export interface ScanOptions {
   /** Root that contains a `projects/` directory (default ~/.claude) */
@@ -105,7 +105,7 @@ export async function parseSessionFile(path: string, slug: string): Promise<{ tu
       sessionId: rec.sessionId || sessionIdFromName,
       projectSlug: slug,
       cwd: rec.cwd || "",
-      gitBranch: rec.gitBranch || "",
+      gitBranch: normBranch(rec.gitBranch),
       model,
       input: Number(usage.input_tokens ?? 0),
       output: Number(usage.output_tokens ?? 0),
@@ -172,4 +172,10 @@ export async function scan(opts: ScanOptions = {}): Promise<ScanResult> {
     opts.onProgress?.(done, files.length);
   }
   return { turns, files: files.length, bytes, cachedFiles, parseErrors, claudeDir };
+}
+
+/** Claude Code logs "HEAD" when the cwd is not a git checkout or is detached; treat it as no branch. */
+function normBranch(b: unknown): string {
+  const v = typeof b === "string" ? b.trim() : "";
+  return v === "HEAD" ? "" : v;
 }

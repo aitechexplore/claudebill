@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { bySession, dayKey, groupBy, inWindow, parseSince, projectName, totals, turnCost, type GroupRow } from "./aggregate.js";
-import { bar, bold, cyan, dim, green, minutes, money, pct, red, shortDate, sparkline, table, tokens, truncate, yellow } from "./format.js";
+import { bar, bold, cyan, dim, green, minutes, money, pct, share, red, shortDate, sparkline, table, tokens, truncate, yellow } from "./format.js";
 import { mergePriceTable, PRICES, PRICES_VERSION, resolvePrice, type ModelPrice } from "./prices.js";
 import { scan } from "./scan.js";
 import type { SessionSummary, Turn } from "./types.js";
@@ -270,7 +270,7 @@ function cmdSummary(turns: Turn[], tb: Record<string, ModelPrice>, _args: string
   if (models.length) {
     console.log("\n" + bold("By model, all time"));
     const max = Math.max(...models.map((m) => m.cost));
-    console.log(table(["Model", "!Cost", "!Share", "!Turns", "!Cache hit", ""], models.map((m) => [m.key, money(m.cost), all.cost ? pct(m.cost / all.cost) : "-", String(m.turns), pct(m.cacheHitRate), bar(m.cost, max, 16)])));
+    console.log(table(["Model", "!Cost", "!Share", "!Turns", "!Cache hit", ""], models.map((m) => [m.key, money(m.cost), all.cost ? share(m.cost / all.cost) : "-", String(m.turns), pct(m.cacheHitRate), bar(m.cost, max, 16)])));
   }
   if (plan) {
     const mult = plan.usd ? monthCost / plan.usd : 0;
@@ -406,7 +406,7 @@ function cmdGroup(kind: "project" | "branch" | "model", turns: Turn[], tb: Recor
   console.log(table([label, "!Cost", "!Share", "!Sessions", "!Turns", "!Tokens", "!Cache hit", ...extra, ""], shown.map((m) => {
     const p = kind === "model" ? resolvePrice(m.key, tb) : undefined;
     const ex = kind === "model" ? [p ? `$${p.input}` : "?", p ? `$${p.output}` : "?", p ? `$${p.cacheRead}` : "?"] : [];
-    return [truncate(m.key, 34), money(m.cost), all.cost ? pct(m.cost / all.cost) : "-", String(m.sessions), String(m.turns), tokens(m.totalTokens), pct(m.cacheHitRate), ...ex, bar(m.cost, max, 16)];
+    return [truncate(m.key, 34), money(m.cost), all.cost ? share(m.cost / all.cost) : "-", String(m.sessions), String(m.turns), tokens(m.totalTokens), pct(m.cacheHitRate), ...ex, bar(m.cost, max, 16)];
   })));
   if (kind === "branch") console.log(dim("\nA branch is the closest thing to a unit of work in the logs; pair with `git log` to get cost per merged PR."));
   console.log(unpricedNote(all.unpricedModels));
