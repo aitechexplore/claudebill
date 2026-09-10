@@ -29,6 +29,8 @@ npx claudebill
 
 It's MIT-licensed and a single dependency-free Node package. I'd love to hear which number you check first.
 
+If your team wants a shared dashboard (per-engineer spend, budgets, Slack alerts), there is a waitlist issue on the repo: https://github.com/aitechexplore/claudebill/issues/1
+
 ## Gallery / screenshot commands
 1. `claudebill` (the summary table)
 2. `claudebill sessions --since 7d`
@@ -37,8 +39,8 @@ It's MIT-licensed and a single dependency-free Node package. I'd love to hear wh
 5. `claudebill live` (animated GIF)
 
 ## Launch checklist
-- [ ] `npm login`, then `npm publish` from the repo (already `prepublishOnly`-tested)
-- [ ] Make the GitHub repo public; add topics claude-code, anthropic, cost, cli
+- [x] Published: https://www.npmjs.com/package/claudebill (0.1.0)
+- [x] Repo public at https://github.com/aitechexplore/claudebill, release v0.1.0, topics set
 - [x] Screenshots 1-4 rendered from real output in `launch/screenshots/` (summary, sessions, cache, branches, models). Still to do: the `claudebill live` GIF, and re-shoot any screenshot you want with your own data.
 - [ ] Post at 00:01 PT (Product Hunt's daily reset) on a Tuesday or Wednesday
 - [ ] Reply to every comment in the first 4 hours; questions people asked the last tool in this space: overhead (none), retroactive (yes), CI (yes, --dir), mixed local models (--prices), agent-to-agent (--sidechain), repricing (prices_version)

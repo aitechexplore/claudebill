@@ -102,6 +102,10 @@ Prices are USD per million tokens. Cache writes cost 1.25x input for the 5-minut
 
 `claudebill` reads files, prints text, and writes a small parse cache under `~/.cache/claudebill`. It never opens a network connection. Your transcripts are yours.
 
+## Teams edition
+
+claudebill is free for individuals and stays that way. If your team wants a shared dashboard with per-engineer spend, budgets, and Slack alerts, add a thumbs-up to [the Teams waitlist issue](https://github.com/aitechexplore/claudebill/issues/1).
+
 ## License
 
 MIT. Copyright (c) 2026 [AI Tech Explore LLC](https://aitechexplore.com).
