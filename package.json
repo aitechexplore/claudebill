@@ -3,21 +3,45 @@
   "version": "0.1.0",
   "description": "See what your Claude Code sessions actually cost. Reads the session logs already on your disk: retroactive, offline, zero dependencies.",
   "type": "module",
-  "bin": { "claudecost": "./dist/index.js" },
+  "bin": {
+    "claudecost": "dist/index.js"
+  },
   "main": "./dist/cli.js",
-  "files": ["dist", "README.md", "LICENSE"],
-  "engines": { "node": ">=18" },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json && chmod +x dist/index.js",
     "test": "npm run build && node --test test/*.test.mjs",
     "prepublishOnly": "npm test",
     "start": "node dist/index.js"
   },
-  "keywords": ["claude", "claude-code", "cost", "tokens", "usage", "anthropic", "cli", "pricing", "cache"],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "cost",
+    "tokens",
+    "usage",
+    "anthropic",
+    "cli",
+    "pricing",
+    "cache"
+  ],
   "author": "Fakhar ul Hassan",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/jeefakharjee/claudecost.git" },
-  "homepage": "https://github.com/jeefakharjee/claudecost#readme",
-  "bugs": "https://github.com/jeefakharjee/claudecost/issues",
-  "devDependencies": { "typescript": "^5.6.0", "@types/node": "^22.0.0" }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EasyTechWithHassan/claudecost.git"
+  },
+  "homepage": "https://github.com/EasyTechWithHassan/claudecost#readme",
+  "bugs": "https://github.com/EasyTechWithHassan/claudecost/issues",
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
 }
