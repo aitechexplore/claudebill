@@ -44,6 +44,6 @@ https://youtu.be/b-uCoQ-pcTY (paste into the Product Hunt Video field)
 ## Launch checklist
 - [x] Published: https://www.npmjs.com/package/claudebill (0.1.0)
 - [x] Repo public at https://github.com/aitechexplore/claudebill, release v0.1.0, topics set
-- [x] Screenshots 1-4 rendered from real output in `launch/screenshots/` (summary, sessions, cache, branches, models). Still to do: the `claudebill live` GIF, and re-shoot any screenshot you want with your own data.
-- [ ] Post at 00:01 PT (Product Hunt's daily reset) on a Tuesday or Wednesday
+- [x] Gallery: 6 images uploaded; YouTube video https://youtu.be/b-uCoQ-pcTY attached; Short https://youtube.com/shorts/yr97bhKslJE live
+- [x] Scheduled for Tuesday 2026-09-15, 00:01 PT
 - [ ] Reply to every comment in the first 4 hours; questions people asked the last tool in this space: overhead (none), retroactive (yes), CI (yes, --dir), mixed local models (--prices), agent-to-agent (--sidechain), repricing (prices_version)
