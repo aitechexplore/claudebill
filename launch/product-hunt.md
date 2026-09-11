@@ -31,6 +31,9 @@ It's MIT-licensed and a single dependency-free Node package. I'd love to hear wh
 
 If your team wants a shared dashboard (per-engineer spend, budgets, Slack alerts), there is a waitlist issue on the repo: https://github.com/aitechexplore/claudebill/issues/1
 
+## Video
+https://youtu.be/b-uCoQ-pcTY (paste into the Product Hunt Video field)
+
 ## Gallery / screenshot commands
 1. `claudebill` (the summary table)
 2. `claudebill sessions --since 7d`

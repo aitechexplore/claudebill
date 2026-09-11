@@ -46,4 +46,4 @@ Happy to answer questions about how the pricing and dedupe work. Source: https:/
 
 ## Video links
 - YouTube Short: https://youtube.com/shorts/yr97bhKslJE
-- YouTube long-form: (pending)
+- YouTube long-form: https://youtu.be/b-uCoQ-pcTY
