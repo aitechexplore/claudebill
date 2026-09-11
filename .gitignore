@@ -2,3 +2,13 @@ node_modules/
 dist/
 *.tgz
 .DS_Store
+
+# video production working files (other session's build/QA artifacts)
+launch/build/
+launch/qa/
+launch/qa-visual/
+launch/voice/
+launch/*.py
+launch/still-*.png
+launch/video-report.md
+launch/music.mp3
