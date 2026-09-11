@@ -2,6 +2,8 @@
 
 **See what your Claude Code sessions actually cost.**
 
+![claudebill demo](launch/demo.gif)
+
 Claude Code already writes a transcript of every session to your disk, with the exact token counts the API billed. `claudebill` reads those files and tells you where the money went: by session, by project, by git branch, by model, by day, and how much prompt caching saved you.
 
 - **Retroactive.** Analyzes the history you already have, back to your first session. Nothing to install first, nothing to hook.
