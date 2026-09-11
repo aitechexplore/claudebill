@@ -12,3 +12,4 @@ launch/*.py
 launch/still-*.png
 launch/video-report.md
 launch/music.mp3
+test/fixtures/.cache-*/
