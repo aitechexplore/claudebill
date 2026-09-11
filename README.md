@@ -2,6 +2,8 @@
 
 **See what your Claude Code sessions actually cost.**
 
+<a href="https://www.producthunt.com/products/claudebill?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-claudebill" target="_blank" rel="noopener noreferrer"><img alt="claudebill - See what your Claude Code sessions actually cost | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1247139&amp;theme=light&amp;t=1789106916494"></a>
+
 ![claudebill demo](https://raw.githubusercontent.com/aitechexplore/claudebill/main/launch/demo.gif)
 
 Claude Code already writes a transcript of every session to your disk, with the exact token counts the API billed. `claudebill` reads those files and tells you where the money went: by session, by project, by git branch, by model, by day, and how much prompt caching saved you.
