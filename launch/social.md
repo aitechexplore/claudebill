@@ -43,3 +43,7 @@ Happy to answer questions about how the pricing and dedupe work. Source: https:/
 3. 8-9am ET: Show HN, linking the GitHub repo (not Product Hunt).
 4. Late morning: Reddit r/ClaudeAI, then r/ClaudeCode a few hours later.
 5. All day: reply to every comment everywhere within an hour.
+
+## Video links
+- YouTube Short: https://youtube.com/shorts/yr97bhKslJE
+- YouTube long-form: (pending)
