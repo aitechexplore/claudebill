@@ -5,7 +5,7 @@ import { mergePriceTable, PRICES, PRICES_VERSION, resolvePrice, type ModelPrice 
 import { scan } from "./scan.js";
 import type { SessionSummary, Turn } from "./types.js";
 
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 
 const PLANS: Record<string, { label: string; usd: number }> = {
   pro: { label: "Claude Pro ($20/mo)", usd: 20 },
@@ -294,13 +294,14 @@ function round(n: number, d = 4): number {
   return Math.round(n * f) / f;
 }
 
-/** What the cache-read tokens would have cost at full input price minus what they cost as reads. */
+/** Net saving from caching: read savings minus the 1.25x/2x premium paid on cache writes. */
 function cacheSavings(turns: Turn[], tb: Record<string, ModelPrice>): number {
   let saved = 0;
   for (const t of turns) {
     const p = resolvePrice(t.model, tb);
     if (!p) continue;
     saved += (t.cacheRead * (p.input - p.cacheRead)) / 1_000_000;
+    saved -= (t.cacheWrite5m * (p.cacheWrite5m - p.input) + t.cacheWrite1h * (p.cacheWrite1h - p.input)) / 1_000_000;
   }
   return saved;
 }
@@ -458,7 +459,7 @@ function cmdCache(turns: Turn[], tb: Record<string, ModelPrice>, _args: string[]
     inputCost += (t.input * p.input) / 1e6;
     outputCost += (t.output * p.output) / 1e6;
   }
-  const uncachedEquivalent = all.cost + saved - writeCost + ((write5m + write1h) * avgInputPrice(turns, tb)) / 1e6;
+  const uncachedEquivalent = all.cost + saved;
   const perSession = bySession(turns, tb).filter((s) => s.turns >= 5).sort((a, b) => a.cacheHitRate - b.cacheHitRate).slice(0, opts.limit || 10);
   if (opts.json) {
     console.log(JSON.stringify(stamp({ cache_hit_rate: round(all.cacheHitRate, 4), cache_read_tokens: all.cacheRead, cache_write_tokens: all.cacheWrite, cache_write_5m_tokens: write5m, cache_write_1h_tokens: write1h, cost_breakdown_usd: { input: round(inputCost), output: round(outputCost), cache_write: round(writeCost), cache_read: round(readCost), total: round(all.cost) }, saved_by_caching_usd: round(saved), uncached_equivalent_usd: round(uncachedEquivalent), worst_sessions: perSession.map(sessionJson) }), null, 2));
@@ -477,18 +478,6 @@ function cmdCache(turns: Turn[], tb: Record<string, ModelPrice>, _args: string[]
   return 0;
 }
 
-function avgInputPrice(turns: Turn[], tb: Record<string, ModelPrice>): number {
-  let tok = 0;
-  let w = 0;
-  for (const t of turns) {
-    const p = resolvePrice(t.model, tb);
-    if (!p) continue;
-    const n = t.cacheWrite5m + t.cacheWrite1h;
-    tok += n;
-    w += n * p.input;
-  }
-  return tok ? w / tok : 0;
-}
 
 function cmdExport(turns: Turn[], tb: Record<string, ModelPrice>, _args: string[], opts: Opts): number {
   const sorted = [...turns].sort((a, b) => a.ts.localeCompare(b.ts));

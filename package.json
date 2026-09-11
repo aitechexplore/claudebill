@@ -1,6 +1,6 @@
 {
   "name": "claudebill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "See what your Claude Code sessions actually cost. Reads the session logs already on your disk: retroactive, offline, zero dependencies.",
   "type": "module",
   "bin": {

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 (2026-09-11)
+
+- `cache` and the summary footer now report the net saving from prompt caching: cache-read savings minus the 1.25x / 2x premium paid on cache writes. The two figures ("saved" and "without caching would be") now agree with each other and with the spend total.
+- Branch shows "-" instead of "HEAD" for folders that are not git checkouts; tiny shares show "<1%".
+- README GIF and demo video.
+
 ## 0.1.0
 
 First release.
