@@ -16,19 +16,19 @@ Attach: launch/youtube-thumbnail.png (or link the long-form video)
 ## 2. LinkedIn, AI Tech Explore company page
 Attach: launch/short-15s/claudebill-15s-square.mp4
 
-> Every Claude Code session writes a transcript to your disk with the exact tokens the API billed. Almost nobody reads them.
+> Your Claude Code bill has a shape. Most teams never see it.
 >
-> We built claudebill to read them. Cost per session, project, git branch, model, and day, plus how much prompt caching saved you. It runs on history you already have, never touches the network, and has zero dependencies.
+> claudebill is a free, open-source CLI that reads the transcripts Claude Code already keeps and answers the questions finance and engineering both ask: cost per session, per project, per git branch, per model, per day, and how much prompt caching saved you.
 >
-> On our own machine: 81 sessions, 7 billion tokens, one project was 96% of all spend, and caching saved about $44,000 API-equivalent. We had no idea until we looked.
+> It works on the history already on the machine. No hooks, no agents, no network calls, zero dependencies.
 >
-> Free and open source. Launching on Product Hunt today.
+> Released today on Product Hunt.
 >
 > npx claudebill
 > https://www.producthunt.com/products/claudebill
 > https://github.com/aitechexplore/claudebill
 >
-> #ClaudeCode #DeveloperTools #OpenSource #AIEngineering
+> #ClaudeCode #DeveloperTools #OpenSource #AIEngineering #FinOps
 
 Then: open the post, Share → Repost, from the personal profile, no comment. (Optional, recommended.)
 
