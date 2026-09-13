@@ -39,9 +39,9 @@ Happy to answer questions about how the pricing and dedupe work. Source: https:/
 
 ## Posting order on launch day (Tue Sep 15)
 1. 00:01 PT: post goes live automatically. Check the first comment appeared.
-2. Morning: LinkedIn post, X post, both linking the Product Hunt page.
+2. Morning: YouTube Community post on Daily AI Minute (video + PH link), LinkedIn post, X thread from @AITechExplore (see x-thread.md), all linking the Product Hunt page.
 3. 8-9am ET: Show HN, linking the GitHub repo (not Product Hunt).
-4. Late morning: Reddit r/ClaudeAI, then r/ClaudeCode a few hours later.
+4. Reddit: NOT on launch day (new account would be removed). Post in 3-4 weeks from an account with some comment history.
 5. All day: reply to every comment everywhere within an hour.
 
 ## Video links
